@@ -1,0 +1,4 @@
+ssl ssl 30 2
+dc dc 35 1
+mfcs mfcs 35 0
+ac ac 40 3
