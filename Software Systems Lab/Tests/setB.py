@@ -93,6 +93,7 @@ df.to_csv("BoW.csv",index=False)
 HMCodes=[]
 
 for i in range(len(listA)):
+    flag=0
     maxLen=max(len(listA[i]),len(listB[i]))
     minLen=min(len(listA[i]),len(listB[i]))
     if(listA[i]==listB[i]):# if codes as same
@@ -105,8 +106,10 @@ for i in range(len(listA)):
                 continue
             else:
                 HMCodes.append(maxLen-j)
+                flag=1
                 break
-                        
+        if(flag==0):
+               HMCodes.append(maxLen-minLen)             
 print(HMCodes)
 
 
