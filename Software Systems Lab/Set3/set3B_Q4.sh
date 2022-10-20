@@ -10,7 +10,6 @@ case $1 in
 ;;
 
 "-m")
-	#findmnt -lo source,target,fstype,label,options,used
 	echo "----------------------------"
 
 	df -h --output=source,target
@@ -31,7 +30,7 @@ case $1 in
 
 *)
 
-	#Disks whoes mem use >=30
+	#Disks whose mem use >=30
 
 	df -h | awk '{ if ($5 >= 30) { print $5 , $1} }'
 

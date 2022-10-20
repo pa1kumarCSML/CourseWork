@@ -1,7 +1,6 @@
 #!/bin/bash
 j=0
 re='^[+-]?[0-9]+?$'
-# re='^[+-]?[0-9]+([.][0-9]+)?$' for floating values..
 
 for i in $@
 do
@@ -13,11 +12,7 @@ do
 	j=`expr $j + 1`
 done
 
-
-# IFS=$'\n' sorted=($(sort <<<"${array[*]}")); unset IFS
-# echo "${sorted[@]}"
-
-echo "no of elemnts: $#"
+echo "no of elements: $#"
 
 
 #logic for sorting--bubble sorting used
