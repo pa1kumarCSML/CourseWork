@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Enter file extension: "
 read ext
 
