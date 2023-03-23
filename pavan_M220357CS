@@ -1,0 +1,15 @@
+Name: Derangula Pavan Kumar
+RollNo: M220357CS
+
+Topic: Digital Iamge lossless Compression and Extraction Using Huffman Coding
+
+
+Abstract:
+
+Digital image compression is an important technique for reducing the size of image files, which can be helpful in a variety of contexts such as storage, transmission, and processing. Huffman coding is a lossless compression algorithm that is widely used in digital image compression due to its ability to effectively encode symbols with varying frequencies. In this project, we aim to implement digital image compression and extraction using Huffman coding in Python.
+
+Our implementation will involve several steps. First, we will read in the image file and convert it to a binary string. Next, we will use Huffman coding to compress the binary string, generating a set of Huffman codes that can be used to decode the compressed data. We will also create a dictionary that maps the original symbols to their corresponding Huffman codes. The compressed data will then be written to a new file.
+
+To extract the original image from the compressed data, we will first read in the compressed file and decode the Huffman codes to obtain the original binary string. Finally, we will convert the binary string back into an image format and save it to a new file.
+
+The main advantages of this project are that it will provide hands-on experience with digital image compression and the Huffman coding algorithm, which are important topics in computer science and image processing. Additionally, the project will be implemented in Python, a widely used programming language with a rich set of libraries and tools for image processing and manipulation
