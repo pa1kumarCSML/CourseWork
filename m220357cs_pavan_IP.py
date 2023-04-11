@@ -2,11 +2,10 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
-import gzip
 import bitarray
 import struct
 import pickle
-
+import os
 
 #Node Structure/class
 
@@ -155,7 +154,7 @@ def save_compressed_file(encoded_image, output_file,huffmanCodes):
     bits = bitarray.bitarray(encoded_image)
 
     # Open a binary file for writing
-    with gzip.open(output_file, 'wb') as f:
+    with open(output_file, 'wb') as f:
         # Write the number of key-value pairs to the file
         num_pairs = len(huffmanCodes)
         f.write(struct.pack('I', num_pairs))
@@ -209,10 +208,14 @@ def convertToImg(compressed_image,codes,filename):
                         break
                     k += 1
     plt.subplot(1, 2, 2)
-    plt.title('Decoded Image')
+    plt.title('Decompressed Image')
     plt.imshow(cv2.cvtColor(decoded_image, cv2.COLOR_BGR2RGB))
     plt.show()
     cv2.imwrite(filename, decoded_image)
+
+def get_file_size(file_path):
+    return os.path.getsize(file_path)
+
 
 def compress_img(imagepath,output_file):
     img = cv2.imread(imagepath)
@@ -224,9 +227,10 @@ def compress_img(imagepath,output_file):
     huffmanCodes = huffmanCoding(img,min_heap)
     compressed_img_str = image_compression_str(img,huffmanCodes)
     save_compressed_file(compressed_img_str,output_file,huffmanCodes)
+    print("\nCompression ratio: ",get_file_size(imagepath)/get_file_size(output_file))
 
 def decompress_img(input_file,decompress_file):
-    with gzip.open(input_file, 'rb') as f:
+    with open(input_file, 'rb') as f:
         num_pairs = struct.unpack('I', f.read(4))[0]
     
         codes = {}
@@ -253,10 +257,10 @@ def decompress_img(input_file,decompress_file):
         actual_encoded_img = bit_string[8:-1*padvalue]
         convertToImg(actual_encoded_img,codes,decompress_file)
 
-        
+
 
 while(1):
-  print("---------------------------------")
+  print("\n---------------------------------")
   print("Choose options\n1)To compress an image\n2)To decompress an image\n3)To exit!")
   option=int(input())
   if(option == 1):
