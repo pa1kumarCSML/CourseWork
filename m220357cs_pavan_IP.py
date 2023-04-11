@@ -251,15 +251,9 @@ def decompress_img(input_file,decompress_file):
 
         padvalue=binToInt(bit_string[0:8])
         actual_encoded_img = bit_string[8:-1*padvalue]
-
         convertToImg(actual_encoded_img,codes,decompress_file)
 
         
-        
-
-
-
-
 
 while(1):
   print("---------------------------------")
