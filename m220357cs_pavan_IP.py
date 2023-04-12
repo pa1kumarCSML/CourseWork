@@ -50,7 +50,7 @@ def LEFT(i):
 def RIGHT(i):
  return 2*i + 1
 
-#inser to min-heap
+#insert to min-heap
 def insertToMinHeap(A,x):
   A.append(x)
   i = len(A)-1
@@ -227,12 +227,12 @@ def compress_img(imagepath,output_file):
     huffmanCodes = huffmanCoding(img,min_heap)
     compressed_img_str = image_compression_str(img,huffmanCodes)
     save_compressed_file(compressed_img_str,output_file,huffmanCodes)
-    print("\nCompression ratio: ",get_file_size(imagepath)/get_file_size(output_file))
+    a,b,c = img.shape
+    print("\nCompression ratio: ",(a*b*c*8)/get_file_size(output_file))
 
 def decompress_img(input_file,decompress_file):
     with open(input_file, 'rb') as f:
-        num_pairs = struct.unpack('I', f.read(4))[0]
-    
+        num_pairs = struct.unpack('I', f.read(4))[0]    
         codes = {}
         for i in range(num_pairs):
             key_len, value_len = struct.unpack('2I', f.read(8))
@@ -256,8 +256,6 @@ def decompress_img(input_file,decompress_file):
         padvalue=binToInt(bit_string[0:8])
         actual_encoded_img = bit_string[8:-1*padvalue]
         convertToImg(actual_encoded_img,codes,decompress_file)
-
-
 
 while(1):
   print("\n---------------------------------")
