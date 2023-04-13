@@ -228,7 +228,8 @@ def compress_img(imagepath,output_file):
     compressed_img_str = image_compression_str(img,huffmanCodes)
     save_compressed_file(compressed_img_str,output_file,huffmanCodes)
     a,b,c = img.shape
-    print("\nCompression ratio: ",(a*b*c*8)/get_file_size(output_file))
+    print("\nCompression ratio: ",(a*b*c)/get_file_size(output_file))
+    print((a*b*c),get_file_size(output_file))
 
 def decompress_img(input_file,decompress_file):
     with open(input_file, 'rb') as f:
@@ -271,3 +272,4 @@ while(1):
     decompress_img(imgname,filename)
   else:
     break
+  
